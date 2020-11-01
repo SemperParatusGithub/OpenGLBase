@@ -1,0 +1,7 @@
+# Directories
+.vs/
+bin/
+bin-int/
+OpenGLBase.sln
+!ThirdParty/bin/premake
+".user
