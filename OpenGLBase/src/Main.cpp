@@ -80,8 +80,7 @@ int main()
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
 
 	/* Shader */
-	auto shaderSrc = OpenGLBase::Shader::LoadFromGLSLFiles("res/shaders/Example.vert.glsl", "res/shaders/Example.frag.glsl");
-	OpenGLBase::Shader shader(shaderSrc);
+	OpenGLBase::Shader shader(OpenGLBase::Shader::LoadFromGLSLFiles("res/shaders/Example.vert.glsl", "res/shaders/Example.frag.glsl"));
 
 	while (!glfwWindowShouldClose(window))
 	{
