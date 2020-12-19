@@ -1,17 +1,14 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
-#include <imgui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
+struct GLFWwindow;
 
+class ImGuiUtil
+{
+public:
+	static void ImGuiInit(GLFWwindow *window);
+	static void ImGuiShutdown();
 
-void ImGuiInit(GLFWwindow *window);
-void ImGuiShutdown();
-
-void ImGuiNewFrame();
-void ImGuiRender();
-
-
+	static void ImGuiNewFrame();
+	static void ImGuiRender();
+};

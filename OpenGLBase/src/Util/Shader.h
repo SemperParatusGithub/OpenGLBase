@@ -2,19 +2,7 @@
 #include <string>
 #include <unordered_map>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
-
-#ifndef SHADER_H
-#define SHADER_H
-
-//  Basic shader class for OpenGL Shaders
-// USAGE: 
-//	Shader shader(Shader::LoadFromGLSLFiles("res/shaders/Basic.vert.glsl", "res/shaders/Basic.frag.glsl"));
-//  shader->Bind();
-//	shader->SetUniformMat4("u_Uniform", glm::mat4(1));
-//	shader->UnBind();
 
 
 namespace OpenGLBase
@@ -33,7 +21,7 @@ namespace OpenGLBase
 
 		void Bind() const;
 		void UnBind() const;
-		inline GLuint GetID() const { return m_ShaderID; }
+		inline uint32_t GetID() const { return m_ShaderID; }
 
 		void SetUniform1i(const std::string &name, int value);
 		void SetUniform1f(const std::string &name, float value);
@@ -57,13 +45,12 @@ namespace OpenGLBase
 		static ShaderSource LoadFromGLSLFiles(std::string vertexPath, std::string fragmentPath);
 
 	private:
-		GLuint CreateShader(const std::string &vertexShader, const std::string &fragmentShader);
-		GLuint CompileShader(GLenum type, const std::string &source);
-		GLint GetUniformLocation(const std::string &name) const;
+		uint32_t CreateShader(const std::string &vertexShader, const std::string &fragmentShader);
+		uint32_t CompileShader(uint32_t type, const std::string &source);
+		int GetUniformLocation(const std::string &name) const;
 
 	private:
-		GLuint m_ShaderID;
+		uint32_t m_ShaderID;
 		mutable std::unordered_map<std::string, int> m_UniformLocationCache;
 	};
 }
-#endif // SHADER_H

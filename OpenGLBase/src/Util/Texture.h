@@ -1,9 +1,6 @@
 #pragma once
-
 #include <iostream>
 
-#ifndef TEXTURE_H
-#define TEXTURE_H
 
 class Texture
 {
@@ -14,7 +11,7 @@ public:
 	unsigned int GetID() const;
 
 	void Bind(uint32_t slot = 0) const;
-	void UnBind();
+	void UnBind() const;
 
 private:
 
@@ -22,5 +19,3 @@ private:
 	unsigned char *m_LocalBuffer;
 	int m_Width, m_Height, m_BPP;
 };
-
-#endif // TEXTURE_H

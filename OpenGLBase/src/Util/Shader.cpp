@@ -1,8 +1,12 @@
 #include "Shader.h"
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 #include <sstream>
 #include <fstream>
 #include <iostream>
+
 
 namespace OpenGLBase
 {
@@ -138,7 +142,7 @@ namespace OpenGLBase
 		return { vertexSource, fragmentSource };
 	}
 
-	GLuint Shader::CreateShader(const std::string &vertexShader, const std::string &fragmentShader)
+	uint32_t Shader::CreateShader(const std::string &vertexShader, const std::string &fragmentShader)
 	{
 		GLuint program = glCreateProgram();
 		GLuint vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
@@ -155,7 +159,7 @@ namespace OpenGLBase
 		return program;
 	}
 
-	GLuint Shader::CompileShader(GLenum type, const std::string &source)
+	uint32_t Shader::CompileShader(uint32_t type, const std::string &source)
 	{
 		GLuint id = glCreateShader(type);
 		const GLchar *src = source.c_str();
@@ -179,7 +183,7 @@ namespace OpenGLBase
 		return id;
 	}
 
-	GLint Shader::GetUniformLocation(const std::string &name) const
+	int Shader::GetUniformLocation(const std::string &name) const
 	{
 		if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
 			return m_UniformLocationCache[name];

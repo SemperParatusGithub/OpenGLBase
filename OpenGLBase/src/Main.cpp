@@ -1,21 +1,11 @@
-#include <iostream>
-#include <stdio.h>
-#include <array>
-#include <filesystem>
+#include "Util/Shader.h"
+#include "Util/Texture.h"
+#include "Util/ImGuiUtil.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Util/Shader.h"
-#include "Util/Texture.h"
-#include "Util/ImGuiUtil.h"
-#include <Windows.h>
-
-
-const char *title = "Example\0";
-
-constexpr int width	 = 1280;
-constexpr int height = 720;
+#include <imgui.h>
 
 
 int main()
@@ -27,8 +17,7 @@ int main()
 	}
 
 	GLFWwindow *window;
-	std::cout << "Creating GLFW window: " << title << " (" << width << ", " << height << ")" << std::endl;
-	window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+	window = glfwCreateWindow(1280, 720, "Hello Window", nullptr, nullptr);
 
 	if (!window)
 	{
@@ -44,7 +33,7 @@ int main()
 	}
 
 	/* ImGui Setup */
-	ImGuiInit(window);
+	ImGuiUtil::ImGuiInit(window);
 
 	ImGui::GetStyle().WindowMinSize = ImVec2 { 400.0f, 500.0f };
 	ImGuiIO &io = ImGui::GetIO();
@@ -56,7 +45,7 @@ int main()
 	float col[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 	glClearColor(0.7f, 0.7f, 0.7f, 0.7f);
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, 1280, 720);
 
 	/* Vertices and Indices */
 	float vertices[] = {
@@ -96,7 +85,7 @@ int main()
 
 	while (!glfwWindowShouldClose(window))
 	{
-		ImGuiNewFrame();
+		ImGuiUtil::ImGuiNewFrame();
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);
@@ -117,8 +106,9 @@ int main()
 		ImGui::PopFont();
 		ImGui::End();
 
-		ImGuiRender();
+		ImGuiUtil::ImGuiRender();
 	}
 
+	ImGuiUtil::ImGuiShutdown();
 	return 0;
 }

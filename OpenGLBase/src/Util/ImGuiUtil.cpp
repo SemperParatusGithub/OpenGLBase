@@ -1,12 +1,14 @@
 #include "ImGuiUtil.h"
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
 
-
-void ImGuiInit(GLFWwindow *window)
+void ImGuiUtil::ImGuiInit(GLFWwindow *window)
 {
 	/* ImGui Setup */
 	ImGui::CreateContext();
@@ -63,21 +65,21 @@ void ImGuiInit(GLFWwindow *window)
 	colors[ImGuiCol_TitleBgCollapsed] = ImVec4 { 0.15f, 0.1505f, 0.151f, 1.0f };
 }
 
-void ImGuiShutdown()
+void ImGuiUtil::ImGuiShutdown()
 {
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 }
 
-void ImGuiNewFrame()
+void ImGuiUtil::ImGuiNewFrame()
 {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 }
 
-void ImGuiRender()
+void ImGuiUtil::ImGuiRender()
 {
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
