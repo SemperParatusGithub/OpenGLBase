@@ -9,7 +9,8 @@ For other Platforms run the following command to generate a project for your pre
 
     premake5 <project-type>
 
-premake5 allows your to generate project files for a number of build systems: Visual Studio, GNU Make, Xcode, Code::Blocks, and more across Windows, Mac OS X, and Linux
+premake5 allows your to generate project files for a number of build systems: Visual Studio, GNU Make, Xcode, Code::Blocks, and more across Windows, Mac OS X, and Linux.
+<br>
 Once the projects have generated without errors, you may use them to build the project.
 ## Third Party Libraries
 * [Premake5](https://premake.github.io/) 
