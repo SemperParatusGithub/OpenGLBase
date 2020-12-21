@@ -1,6 +1,4 @@
-#include "Util/Shader.h"
-#include "Util/Texture.h"
-#include "Util/ImGuiUtil.h"
+#include "OpenGLBase/OpenGLBase.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -10,30 +8,7 @@
 
 int main()
 {
-	if (!glfwInit())
-	{
-		std::cout << "Failed to initialize GLFW!" << std::endl;
-		return -1;
-	}
-
-	GLFWwindow *window;
-	window = glfwCreateWindow(1280, 720, "Hello Window", nullptr, nullptr);
-
-	if (!window)
-	{
-		std::cout << "Failed to create GLFW window!" << std::endl;
-		return -1;
-	}
-	glfwMakeContextCurrent(window);
-
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialize Glad!" << std::endl;
-		return -1;
-	}
-
-	/* ImGui Setup */
-	ImGuiUtil::ImGuiInit(window);
+	OpenGLBase::Window window("OpenGL Base", 1280, 720);
 
 	ImGui::GetStyle().WindowMinSize = ImVec2 { 400.0f, 500.0f };
 	ImGuiIO &io = ImGui::GetIO();
@@ -82,32 +57,25 @@ int main()
 	/* Shader */
 	OpenGLBase::Shader shader(OpenGLBase::Shader::LoadFromGLSLFiles("res/shaders/Example.vert.glsl", "res/shaders/Example.frag.glsl"));
 
-	while (!glfwWindowShouldClose(window))
+	while (window.isOpen())
 	{
-		ImGuiUtil::ImGuiNewFrame();
+		OpenGLBase::ImGuiUtil::BeginFrame();
+		window.Update();
 
-		glfwPollEvents();
-		glfwSwapBuffers(window);
-
-		glClear(GL_COLOR_BUFFER_BIT);
+		window.Clear();
 
 		shader.Bind();
 		shader.SetUniform4f("u_Color", col[0], col[1], col[2], col[3]);
 		glBindVertexArray(va);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
-		ImGui::PushFont(openSansBold);
 		ImGui::Begin("Settings");
-		ImGui::PushFont(openSansRegular);
 		ImGui::SetNextItemWidth(ImGui::GetWindowSize().x * 2.f / 3.25f);
 		ImGui::ColorPicker4("Square color", col);
-		ImGui::PopFont();
-		ImGui::PopFont();
 		ImGui::End();
 
-		ImGuiUtil::ImGuiRender();
+		OpenGLBase::ImGuiUtil::EndFrame();
 	}
 
-	ImGuiUtil::ImGuiShutdown();
 	return 0;
 }
