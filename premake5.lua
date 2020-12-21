@@ -29,6 +29,7 @@ project "OpenGLBase"
 	}
 	includedirs { 
 		"OpenGLBase/src",
+		"OpenGLBase/src/include",
 		"OpenGLBase/ThirdParty/GLFW/include",
 		"OpenGLBase/ThirdParty/Glad/include",
 		"OpenGLBase/ThirdParty/imgui",
