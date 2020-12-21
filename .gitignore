@@ -1,7 +1,11 @@
 # Directories
-.vs/
 bin/
 bin-int/
 OpenGLBase.sln
-!ThirdParty/bin/premake
-".user
+
+# VS
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
