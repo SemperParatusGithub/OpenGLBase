@@ -1,14 +1,16 @@
-#pragma once
-
+ #pragma once
 
 struct GLFWwindow;
 
-class ImGuiUtil
+namespace OpenGLBase
 {
-public:
-	static void ImGuiInit(GLFWwindow *window);
-	static void ImGuiShutdown();
+	class ImGuiUtil
+	{
+	public:
+		static void Init(GLFWwindow *window);
+		static void Shutdown();
 
-	static void ImGuiNewFrame();
-	static void ImGuiRender();
-};
+		static void BeginFrame();
+		static void EndFrame();
+	};
+}

@@ -5,6 +5,12 @@
 #include <glm/glm.hpp>
 
 
+// How to use: 
+//	Shader shader({ VertexString, FramentString });
+//	Shader shader(Shader::LoadFromGLSLFile("filepath"));
+//	Shader shader(Shader::LoadFromGLSLFile("VertexPath", "FragmentPath"));
+
+
 namespace OpenGLBase
 {
 	struct ShaderSource

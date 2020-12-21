@@ -2,20 +2,24 @@
 #include <iostream>
 
 
-class Texture
+namespace OpenGLBase
 {
-public:
-	Texture(const std::string &filepath);
-	~Texture();
+	class Texture
+	{
+	public:
+		Texture(const std::string &filepath);
+		~Texture();
 
-	unsigned int GetID() const;
+		inline uint32_t GetID() const { return m_TextureID; }
 
-	void Bind(uint32_t slot = 0) const;
-	void UnBind() const;
+		inline uint32_t GetWidth() const { return m_Width; }
+		inline uint32_t GetHeight() const { return m_Height; }
 
-private:
+		void Bind(uint32_t slot = 0) const;
+		void UnBind(uint32_t slot = 0) const;
 
-	unsigned int m_TextureID;
-	unsigned char *m_LocalBuffer;
-	int m_Width, m_Height, m_BPP;
-};
+	private:
+		uint32_t m_Width, m_Height;
+		uint32_t m_TextureID;
+	};
+}
