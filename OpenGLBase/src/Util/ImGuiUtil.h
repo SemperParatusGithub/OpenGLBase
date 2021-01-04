@@ -7,7 +7,7 @@ namespace OpenGLBase
 	class ImGuiUtil
 	{
 	public:
-		static void Init(GLFWwindow *window);
+		static void Init(GLFWwindow *window);	// Init and Shutdown is called by the window class
 		static void Shutdown();
 
 		static void BeginFrame();

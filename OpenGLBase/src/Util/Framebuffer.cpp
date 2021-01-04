@@ -1,5 +1,9 @@
 #include "Framebuffer.h"
 
+#include <assert.h>
+#include <glad/glad.h>
+
+
 
 namespace OpenGLBase
 {
@@ -45,12 +49,12 @@ namespace OpenGLBase
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
-	void Framebuffer::Bind()
+	void Framebuffer::Bind() const
 	{
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererID);
 		glViewport(0, 0, m_Width, m_Height);
 	}
-	void Framebuffer::Unbind()
+	void Framebuffer::Unbind() const
 	{
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}

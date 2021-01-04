@@ -11,10 +11,7 @@ int main()
 	OpenGLBase::Window window("OpenGL Base", 1280, 720);
 
 	ImGui::GetStyle().WindowMinSize = ImVec2 { 400.0f, 500.0f };
-	ImGuiIO &io = ImGui::GetIO();
-	ImFont *openSansRegular = io.Fonts->AddFontFromFileTTF("res/fonts/OpenSans/OpenSans-Regular.ttf", 32.0f);
-	ImFont *openSansBold = io.Fonts->AddFontFromFileTTF("res/fonts/OpenSans/OpenSans-Bold.ttf", 32.0f);
-	io.FontDefault = openSansRegular;
+	ImGui::GetIO().FontDefault = ImGui::GetIO().Fonts->AddFontFromFileTTF("res/fonts/OpenSans/OpenSans-Regular.ttf", 32.0f);
 
 	/* Square Color */
 	float col[4] = { 1.0f, 1.0f, 1.0f, 1.0f };

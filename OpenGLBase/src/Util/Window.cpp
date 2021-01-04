@@ -36,12 +36,8 @@ namespace OpenGLBase
 	}
 	Window::~Window()
 	{
+		ImGuiUtil::Shutdown();
 		glfwDestroyWindow(m_Window);
-	}
-	void Window::HideConsole()
-	{
-		HWND consoleWindow = GetConsoleWindow();
-		ShowWindow(consoleWindow, 0);
 	}
 
 	bool Window::isOpen() const

@@ -13,11 +13,10 @@ namespace OpenGLBase
 		Window(const std::string &title, uint32_t width, uint32_t height);
 		~Window();
 
-		static void HideConsole();
-
 		bool isOpen() const;
-		void Update();
 		void Close();
+
+		void Update();
 		void Clear(const glm::vec4 &clearColor = { 0.7f, 0.7f, 0.7f, 0.7f });
 
 		inline GLFWwindow *GetWindow() const { return m_Window; }

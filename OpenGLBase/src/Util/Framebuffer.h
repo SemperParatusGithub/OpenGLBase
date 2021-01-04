@@ -1,9 +1,5 @@
 #pragma once
-
 #include <iostream>
-#include <assert.h>
-
-#include <glad/glad.h>
 
 
 namespace OpenGLBase
@@ -16,10 +12,10 @@ namespace OpenGLBase
 
 		void Invalidate();
 
-		void Bind();
-		void Unbind();
+		void Bind() const;
+		void Unbind() const;
 
-		inline uint32_t GetColorAttachmentRendererID() const { return m_ColorAttachment; }
+		inline uint32_t GetColorAttachment() const { return m_ColorAttachment; }
 
 	private:
 		uint32_t m_RendererID = 0;
