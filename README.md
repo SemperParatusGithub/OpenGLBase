@@ -1,5 +1,6 @@
 # OpenGL Base
-A simple project that provides some util functions and third party librararies that you can just clone and write some OpenGL code.
+A simple project that provides some util functions and third party libraries.
+Just clone the repo and start writing some OpenGL code.
 ## License
 OpenGL Base is under the MIT license. For full license text see LICENCE.txt
 ## Building
