@@ -3,8 +3,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <Windows.h>
-
 #include "ImGuiUtil.h"
 
 
