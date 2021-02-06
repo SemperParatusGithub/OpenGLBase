@@ -78,4 +78,22 @@ namespace OpenGLBase
 	{
 		glfwSetWindowSize(m_Window, (int) size.x, (int) size.y);
 	}
+
+	bool Window::IsKeyPressed(KeyCode kc) const
+	{
+		auto state = glfwGetKey(m_Window, static_cast<uint32_t>(kc));
+		return state == GLFW_PRESS;
+	}
+	bool Window::IsMouseButtonPressed(MouseCode mc) const
+	{
+		int state = glfwGetMouseButton(m_Window, static_cast<uint32_t>(mc));
+		return state == GLFW_PRESS;
+	}
+	std::pair<float, float> Window::GetMousePosition() const
+	{
+		double xPos, yPos;
+		glfwGetCursorPos(m_Window, &xPos, &yPos);
+
+		return std::pair { static_cast<float>(xPos), static_cast<float>(yPos) };
+	}
 }

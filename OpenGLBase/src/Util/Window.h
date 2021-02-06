@@ -1,6 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <iostream>
+#include "Codes.h"
 
 
 struct GLFWwindow;
@@ -26,6 +27,11 @@ namespace OpenGLBase
 
 		void SetPosition(const glm::vec2 &pos);
 		void SetSize(const glm::vec2 &size);
+
+		bool IsKeyPressed(KeyCode kc) const;
+		bool IsMouseButtonPressed(MouseCode mc) const;
+
+		std::pair<float, float> GetMousePosition() const;
 
 	private:
 		GLFWwindow *m_Window;
